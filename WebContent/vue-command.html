@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令用于在表达式的值改变时，将某些行为应用到 DOM 上</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-if="seen">现在你看到我了</p>
+    <p v-if="seen2">hahaha</p>
+</div>
+
+<script>
+    var b=false;
+    new Vue({
+        el: '#app',
+        data: {
+            seen: b,
+            seen2:!b
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js 都提供了完全的 JavaScript 表达式支持。</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    {{5+5}}<br>
+    {{ ok ? 'YES' : 'NO' }}<br>
+    {{ message.split(' ').reverse().join(' ') }}
+    <div v-bind:id="'list-' + id">菜鸟教程</div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            ok: true,
+            message: 'RUNOOB is a website',
+            id : 1
+        }
+    })
+</script>
+</body>
+</html>
