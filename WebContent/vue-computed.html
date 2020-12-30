@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <p>{{message}}</p>
+    <p>{{reverseMessage}}</p>
+    <p>{{reverseMessage2()}}</p>
+</div>
+
+<div id="app2">
+
+</div>
+
+<div id="app3">
+
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message:'this world'
+        },
+        computed:{
+            reverseMessage:function(){
+                return this.message.split('').reverse().join('');
+            }
+        },
+        methods:{
+            reverseMessage2:function(){
+                return this.message.split('').reverse().join('');
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app2',
+        data: {
+
+        }
+    })
+
+    new Vue({
+        el:'#app3',
+        data:{
+
+        }
+
+    })
+</script>
+</body>
+</html>

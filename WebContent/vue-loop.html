@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <ol>
+        <li v-for="site in sites">
+            {{ site.name }}
+        </li>
+    </ol>
+</div>
+
+<div id="app2">
+    <p>在模板中使用for</p>
+    <ul>
+        <template v-for="site in sites">
+            <li>{{ site.name }}</li>
+            <li>--------------</li>
+        </template>
+    </ul>
+</div>
+
+<template>模板模板模板</template>
+
+<p>v-for 可以通过一个对象的属性来迭代数据：</p>
+<div id="app3">
+    <ul>
+        <li v-for="value in obj">
+            {{ value }}
+        </li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            sites:[{
+                name:'dalian'
+            },{
+                name:'qingdao'
+            },{
+                name:'nanjing'
+            }]
+        }
+    })
+
+    new Vue({
+        el: '#app2',
+        data: {
+            sites:[{
+                name:'dalian'
+            },{
+                name:'qingdao'
+            },{
+                name:'nanjing'
+            }]
+        }
+    })
+
+    new Vue({
+        el:'#app3',
+        data:{
+            obj:{
+                name: '菜鸟教程',
+                url: 'http://www.runoob.com',
+                slogan: '学的不仅是技术，更是梦想！'
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

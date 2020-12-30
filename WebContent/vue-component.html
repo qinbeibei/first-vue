@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <mycom></mycom>
+    </div>
+
+    <p>prop 是子组件用来接受父组件传递过来的数据的一个自定义属性。
+        父组件的数据需要通过 props 把数据传给子组件，子组件需要显式地用 props 选项声明 "prop"</p>
+
+    <div id="app2">
+        <child message="hello!"></child>
+    </div>
+
+
+    <div id="app3">
+        <ol>
+            <todo-item v-for="item in sites" v-bind:todo="item"></todo-item>
+        </ol>
+    </div>
+
+    <script>
+
+        Vue.component('mycom',{ //必须是小写
+            template:'<h1>自定义组件</h1>'
+        })
+        new Vue({
+            el: '#app'
+        })
+
+        ///////////
+        // 注册
+        Vue.component('child', {
+            // 声明 props
+            props: ['message'],
+            // 同样也可以在 vm 实例中像 "this.message" 这样使用
+            template: '<span>{{ message }}</span>'
+        })
+        // 创建根实例
+        new Vue({
+            el: '#app2'
+        })
+
+        /////////////
+        Vue.component('todo-item',{
+            props:['todo'],
+            template:'<li>{{todo.text}}</li>'
+        })
+
+        new Vue({
+            el:'#app3',
+            data:{
+                sites:[
+                    { text:'aaa'},
+                    { text:'bbb'},
+                    { text:'ccc'}
+                ]
+            }
+        })
+
+
+    </script>
+</body>
+</html>

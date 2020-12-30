@@ -11,6 +11,16 @@
     <p v-if="seen2">hahaha</p>
 </div>
 
+<div id="app2">
+    <button v-on:click="doSomething">click</button>
+</div>
+
+
+<div id="app3">
+    <p>{{ originmsg }}</p>
+    <button v-on:click="reverseMessage">反转字符串</button>
+</div>
+
 <script>
     var b=false;
     new Vue({
@@ -18,6 +28,30 @@
         data: {
             seen: b,
             seen2:!b
+        }
+    })
+
+    new Vue({
+        el:'#app2',
+        data:{
+            msg:'1234567890'
+        },
+        methods:{
+            doSomething:function(){
+                alert(this.msg)
+            }
+        }
+    })
+
+    new Vue({
+        el:'#app3',
+        data:{
+            originmsg:'hello'
+        },
+        methods: {
+            reverseMessage:function (){
+                this.originmsg=this.originmsg.split('').reverse().join('')
+            }
         }
     })
 </script>
