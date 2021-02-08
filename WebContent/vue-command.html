@@ -7,18 +7,41 @@
 </head>
 <body>
 <div id="app">
-    <p v-if="seen">现在你看到我了</p>
-    <p v-if="seen2">hahaha</p>
+    <p>v-if="flag"  根据值的真假，切换元素创建/销毁（在DOM中存在/不存在）</p>
+    <p v-if="seen">b=true</p>
+    <p v-if="seen2">b=false</p>
+    <p>v-show="flag"  根据值的真假，切换元素的display属性,flag=false时元素的display为none</p>
+    <p v-show="show">v-show示例:show=true</p>
 </div>
-
 <div id="app2">
+    <p>v-on示例1</p>
     <button v-on:click="doSomething">click</button>
-</div>
-
-
-<div id="app3">
+    <p>v-on示例2</p>
     <p>{{ originmsg }}</p>
     <button v-on:click="reverseMessage">反转字符串</button>
+</div>
+
+<div id="app3">
+    <p>条件判断使用v-if，v-else，v-else-if指令</p>
+    <div v-if="Math.random() > 0.5">
+        Sorry
+    </div>
+    <div v-else>
+        Not sorry
+    </div>
+
+    <div v-if="type === 'A'">
+        A
+    </div>
+    <div v-else-if="type === 'B'">
+        B
+    </div>
+    <div v-else-if="type === 'C'">
+        C
+    </div>
+    <div v-else>
+        Not A/B/C
+    </div>
 </div>
 
 <script>
@@ -27,18 +50,23 @@
         el: '#app',
         data: {
             seen: b,
-            seen2:!b
+            seen2:!b,
+            show: false
         }
     })
 
     new Vue({
         el:'#app2',
         data:{
-            msg:'1234567890'
+            msg:'1234567890',
+            originmsg:'hello'
         },
         methods:{
             doSomething:function(){
                 alert(this.msg)
+            },
+            reverseMessage:function (){
+                this.originmsg=this.originmsg.split('').reverse().join('')
             }
         }
     })
@@ -46,12 +74,10 @@
     new Vue({
         el:'#app3',
         data:{
-            originmsg:'hello'
+            type:'A'
         },
         methods: {
-            reverseMessage:function (){
-                this.originmsg=this.originmsg.split('').reverse().join('')
-            }
+
         }
     })
 </script>
